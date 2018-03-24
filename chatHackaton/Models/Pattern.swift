@@ -8,7 +8,19 @@
 
 import Foundation
 
-class Pattern {
+class Pattern: NSObject, NSCoding {
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(path, forKey: "path")
+    }
+    
+    required convenience init?(coder aDecoder: NSCoder) {
+        let path = aDecoder.decodeObject(forKey: "path") as! [Int]
+        let name = aDecoder.decodeObject(forKey: "name") as! String
+        self.init(name: name, path: path)
+        
+    }
+    
     let name: String
     let path: [Int]
     

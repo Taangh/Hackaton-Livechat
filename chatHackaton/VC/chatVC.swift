@@ -230,8 +230,6 @@ final class chatVC: JSQMessagesViewController {
             self.scrollToBottom(animated: true)
         }
     }
-    
-    
 }
 
 extension chatVC: OXPatternLockDelegate {

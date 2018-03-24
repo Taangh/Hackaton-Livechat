@@ -22,6 +22,11 @@ class settingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     @IBAction func addButton(_ sender: Any) {
         patterns.append(Pattern(name: textField.text!, path: lastPath))
+        let defaults = UserDefaults.standard
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: patterns)
+        defaults.set(encodedData, forKey: "patterns")
+        defaults.synchronize()
+
         tblView.reloadData()
 
     }
@@ -43,6 +48,13 @@ class settingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         tblView.delegate = self
         tblView.dataSource = self
         setUpDotsView()
+        let defaults = UserDefaults.standard
+        if let decoded = defaults.object(forKey: "patterns") as? Data {
+            let decodedPatterns = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Pattern]
+            patterns = decodedPatterns
+            print(decodedPatterns)
+        }
+
     }
     
     func setUpDotsView() {
@@ -68,6 +80,9 @@ class settingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        textField.text = patterns[indexPath.row].name
+        print(patterns[indexPath.row].path)
     }
+    
+    
 }
