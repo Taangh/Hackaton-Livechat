@@ -24,20 +24,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Jgt-DS-vqa">
-                                <rect key="frame" x="80" y="476" width="215" height="101"/>
+                                <rect key="frame" x="80" y="285" width="215" height="97"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Podaj login" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="339-jG-hio">
-                                        <rect key="frame" x="0.0" y="0.0" width="215" height="43"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Agent's name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="339-jG-hio">
+                                        <rect key="frame" x="0.0" y="0.0" width="215" height="41"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="21"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b8T-zW-ULa">
-                                        <rect key="frame" x="0.0" y="58" width="215" height="43"/>
+                                        <rect key="frame" x="0.0" y="56" width="215" height="41"/>
                                         <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="21"/>
-                                        <state key="normal" title="Zaloguj">
+                                        <state key="normal" title="Log In">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -46,14 +46,18 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="0aK-jE-Ov7">
+                                <rect key="frame" x="95" y="165" width="184" height="70"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.84612944160000003" green="0.84612944160000003" blue="0.84612944160000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Jgt-DS-vqa" firstAttribute="top" secondItem="0aK-jE-Ov7" secondAttribute="bottom" constant="50" id="7cV-LO-Ud6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jgt-DS-vqa" secondAttribute="trailing" constant="80" id="Isu-d4-EEB"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Jgt-DS-vqa" secondAttribute="bottom" constant="90" id="SQH-Qh-Iki"/>
-                            <constraint firstItem="Jgt-DS-vqa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="456" id="WA2-PS-51j"/>
                             <constraint firstItem="Jgt-DS-vqa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aml-cD-qJZ"/>
+                            <constraint firstItem="0aK-jE-Ov7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gKL-re-hUn"/>
                             <constraint firstItem="Jgt-DS-vqa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="k0T-gu-FTx"/>
+                            <constraint firstItem="Jgt-DS-vqa" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="zt1-5W-PwT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -184,4 +188,7 @@
             <point key="canvasLocation" x="946" y="134"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="184" height="70"/>
+    </resources>
 </document>
