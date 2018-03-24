@@ -70,15 +70,15 @@ final class chatVC: JSQMessagesViewController {
         super.viewDidLoad()
         addViewOnTop()
         locker.isHidden = true
-        self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 300, right: 0)
+        self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsets(top: 0 , left: 0, bottom: 30, right: 0)
         self.senderId = Auth.auth().currentUser?.uid
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         self.inputToolbar.contentView.textView.placeHolder = "Wiadomość"
         self.inputToolbar.contentView.rightBarButtonItem.setTitle("Ok", for: UIControlState.normal)
         self.inputToolbar.contentView.leftBarButtonItem.setTitle("Dots  ", for: UIControlState.normal)
-        self.inputToolbar.contentView.leftBarButtonItem.setImage(#imageLiteral(resourceName: "dot"), for: .normal)
-        self.inputToolbar.contentView.leftBarButtonItem.sizeToFit()
+        self.inputToolbar.contentView.leftBarButtonItem.setImage(#imageLiteral(resourceName: "splaszczona"), for: [.normal, .highlighted] )
+        self.inputToolbar.contentView.leftBarButtonItem.setImage(#imageLiteral(resourceName: "splaszczona"), for: [.normal] )
 
         observeMessages()
     }
