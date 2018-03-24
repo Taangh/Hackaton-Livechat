@@ -24,7 +24,7 @@ final class chatVC: JSQMessagesViewController {
     lazy var incomingBubbleImageView: JSQMessagesBubbleImage = self.setupIncomingBubble()
     private lazy var messageRef: DatabaseReference = self.channelRef!.child("messages")
     private var newMessageRefHandle: DatabaseHandle?
-    
+    var locker = OXPatternLock()
 //    @IBOutlet weak var patternLockView: UIView!
 //    @IBAction func textField(_ sender: UITextField) {
 //        if switchKeyboardOn == false {
@@ -56,19 +56,34 @@ final class chatVC: JSQMessagesViewController {
         
         super.viewDidLoad()
         addViewOnTop()
-        self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 260, right: 0)
-        self.inputToolbar.contentView.textView.frame.origin = CGPoint(x: 0, y: 300)
+        locker.isHidden = true
+        self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 300, right: 0)
         self.senderId = Auth.auth().currentUser?.uid
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-        self.inputToolbar.contentView.leftBarButtonItem = UIButton(type: .system)
         self.inputToolbar.contentView.textView.placeHolder = "Wiadomość"
         self.inputToolbar.contentView.rightBarButtonItem.setTitle("Ok", for: UIControlState.normal)
+        self.inputToolbar.contentView.leftBarButtonItem.setTitle("Dots  ", for: UIControlState.normal)
+
         observeMessages()
     }
     
+    override func didPressAccessoryButton(_ sender: UIButton!) {
+        if(locker.isHidden) {
+            locker.isHidden = false
+            self.inputToolbar.contentView.textView.isEditable = false
+
+            
+        } else {
+            locker.isHidden = true
+            self.inputToolbar.contentView.textView.isEditable = true
+
+        }
+        
+    }
+    
     func addViewOnTop() {
-        let locker = OXPatternLock(frame: CGRect(x: 0, y: self.view.bounds.height - 260 - self.inputToolbar.frame.height, width: self.view.bounds.width, height: 260))
+        locker = OXPatternLock(frame: CGRect(x: 0, y: self.view.bounds.height - 260 - self.inputToolbar.frame.height, width: self.view.bounds.width, height: 260))
         locker.delegate = self
         locker.backgroundColor = .white
         locker.dot = UIImage(named: "dot.png")
@@ -179,17 +194,21 @@ final class chatVC: JSQMessagesViewController {
 
 extension chatVC: OXPatternLockDelegate {
     func didPatternInput(patterLock: OXPatternLock, track: [Int]) {
-//        timer?.invalidate()
-//        if writeYes == track {
-//            textLabel.text = "yes"
+        timer?.invalidate()
+        self.inputToolbar.contentView.rightBarButtonItem.isEnabled = true
+        if writeYes == track {
+            //textLabel.text = "yes"
 //            textField.text = "yes"
-//        }
-//        else if writeNo == track {
+            self.inputToolbar.contentView.textView.text = "yes"
+        }
+        else if writeNo == track {
 //            textLabel.text = "no"
-//        }
-//        else {
-//            print("inknown code")
-//        }
+            self.inputToolbar.contentView.textView.text = "no"
+
+        }
+        else {
+            print("inknown code")
+        }
         print(track)
     }
 }

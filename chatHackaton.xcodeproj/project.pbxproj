@@ -13,6 +13,7 @@
 		2D2199AF205F017F00C1B4E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D2199AE205F017F00C1B4E6 /* Assets.xcassets */; };
 		2D2199B2205F017F00C1B4E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D2199B0205F017F00C1B4E6 /* LaunchScreen.storyboard */; };
 		2D2199BA205F01BF00C1B4E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D2199B9205F01BF00C1B4E6 /* GoogleService-Info.plist */; };
+		2D21E76620668CE5006B69B5 /* settingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D21E76520668CE5006B69B5 /* settingsVC.swift */; };
 		2D94603B206575BE00D30DE7 /* loginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94603A206575BE00D30DE7 /* loginVC.swift */; };
 		2D94603F20657A6500D30DE7 /* chatListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94603E20657A6500D30DE7 /* chatListVC.swift */; };
 		2D94604120657E9600D30DE7 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94604020657E9600D30DE7 /* Channel.swift */; };
@@ -31,6 +32,7 @@
 		2D2199B1205F017F00C1B4E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D2199B3205F017F00C1B4E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D2199B9205F01BF00C1B4E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2D21E76520668CE5006B69B5 /* settingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsVC.swift; sourceTree = "<group>"; };
 		2D94603A206575BE00D30DE7 /* loginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginVC.swift; sourceTree = "<group>"; };
 		2D94603E20657A6500D30DE7 /* chatListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatListVC.swift; sourceTree = "<group>"; };
 		2D94604020657E9600D30DE7 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 				2D94603A206575BE00D30DE7 /* loginVC.swift */,
 				2D94603E20657A6500D30DE7 /* chatListVC.swift */,
 				2D94604520658F5B00D30DE7 /* chatVC.swift */,
+				2D21E76520668CE5006B69B5 /* settingsVC.swift */,
 			);
 			path = VC;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				2D94603F20657A6500D30DE7 /* chatListVC.swift in Sources */,
 				2D94604120657E9600D30DE7 /* Channel.swift in Sources */,
 				2D94604620658F5B00D30DE7 /* chatVC.swift in Sources */,
+				2D21E76620668CE5006B69B5 /* settingsVC.swift in Sources */,
 				2D2199AA205F017F00C1B4E6 /* ViewController.swift in Sources */,
 				D1CC8AFF20665D320076F8AD /* OXPatternLock.swift in Sources */,
 				2D94603B206575BE00D30DE7 /* loginVC.swift in Sources */,
