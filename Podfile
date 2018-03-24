@@ -9,5 +9,6 @@ target 'chatHackaton' do
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'JSQMessagesViewController'
+  pod 'HUIPatternLockView-Swift'
 
 end

@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import JSQMessagesViewController
+import HUIPatternLockView_Swift
 
 final class chatVC: JSQMessagesViewController {
     var switchKeyboardOn: Bool = true
@@ -24,8 +25,7 @@ final class chatVC: JSQMessagesViewController {
     private lazy var messageRef: DatabaseReference = self.channelRef!.child("messages")
     private var newMessageRefHandle: DatabaseHandle?
     
-    
-    @IBOutlet weak var patternLockView: UIView!
+//    @IBOutlet weak var patternLockView: UIView!
 //    @IBAction func textField(_ sender: UITextField) {
 //        if switchKeyboardOn == false {
 //            showDots()
@@ -36,7 +36,7 @@ final class chatVC: JSQMessagesViewController {
     fileprivate var writeNo: [Int] = [3,4,5]
     fileprivate var timer: Timer?
     
-    @IBOutlet var patternLock: OXPatternLock!
+//    @IBOutlet var patternLock: OXPatternLock!
 //    @IBAction func switchType(_ sender: UISwitch) {
 //        if (sender.isOn == true) {
 //            showKeyboard()
@@ -53,19 +53,31 @@ final class chatVC: JSQMessagesViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        addViewOnTop()
+        self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 260, right: 0)
+        self.inputToolbar.contentView.textView.frame.origin = CGPoint(x: 0, y: 300)
         self.senderId = Auth.auth().currentUser?.uid
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
-        self.inputToolbar.contentView.leftBarButtonItem = nil
+        self.inputToolbar.contentView.leftBarButtonItem = UIButton(type: .system)
         self.inputToolbar.contentView.textView.placeHolder = "Wiadomość"
-        patternLock.delegate = self
-//        patternLockView.isHidden = true
         self.inputToolbar.contentView.rightBarButtonItem.setTitle("Ok", for: UIControlState.normal)
-        self.view.endEditing(true)
         observeMessages()
     }
     
+    func addViewOnTop() {
+        let locker = OXPatternLock(frame: CGRect(x: 0, y: self.view.bounds.height - 260 - self.inputToolbar.frame.height, width: self.view.bounds.width, height: 260))
+        locker.delegate = self
+        locker.backgroundColor = .white
+        locker.dot = UIImage(named: "dot.png")
+        locker.dotSelected = UIImage(named: "dot-selected.png")
+        locker.trackLineThickness = CGFloat(3)
+        locker.lockSize = 3
+        locker.trackLineColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
+        view.addSubview(locker)
+    }
     
     func dismissKeyboard() {
         view.endEditing(true)
@@ -73,17 +85,6 @@ final class chatVC: JSQMessagesViewController {
     
     func showKeyboard() {
         view.endEditing(false)
-    }
-    
-    func showDots() {
-        self.patternLockView.isHidden = false
-        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
-            self.patternLockView.center.y = self.patternLockView.bounds.height
-        }, completion: nil)
-    }
-    
-    func dismissDots() {
-        self.patternLockView.isHidden = true
     }
     
     @IBAction func recordPatternClick(_ sender: Any) {
@@ -174,7 +175,6 @@ final class chatVC: JSQMessagesViewController {
         })
     }
     
-    
 }
 
 extension chatVC: OXPatternLockDelegate {
@@ -190,5 +190,6 @@ extension chatVC: OXPatternLockDelegate {
 //        else {
 //            print("inknown code")
 //        }
+        print(track)
     }
 }

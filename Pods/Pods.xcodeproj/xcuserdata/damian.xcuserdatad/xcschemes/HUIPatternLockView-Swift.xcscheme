@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DF8258BE151885CD99CC8325FAFAA25A"
-               BuildableName = "Pods_chatHackaton.framework"
-               BlueprintName = "Pods-chatHackaton"
+               BlueprintIdentifier = "3528D1BCBE577D021A65B0818EB1CC20"
+               BuildableName = "HUIPatternLockView_Swift.framework"
+               BlueprintName = "HUIPatternLockView-Swift"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -47,9 +47,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DF8258BE151885CD99CC8325FAFAA25A"
-            BuildableName = "Pods_chatHackaton.framework"
-            BlueprintName = "Pods-chatHackaton"
+            BlueprintIdentifier = "3528D1BCBE577D021A65B0818EB1CC20"
+            BuildableName = "HUIPatternLockView_Swift.framework"
+            BlueprintName = "HUIPatternLockView-Swift"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

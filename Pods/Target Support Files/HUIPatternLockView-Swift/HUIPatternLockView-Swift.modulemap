@@ -1,0 +1,6 @@
+framework module HUIPatternLockView_Swift {
+  umbrella header "HUIPatternLockView-Swift-umbrella.h"
+
+  export *
+  module * { export * }
+}
