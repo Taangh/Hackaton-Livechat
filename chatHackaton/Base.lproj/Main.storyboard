@@ -151,6 +151,7 @@
                     <connections>
                         <outlet property="addButton" destination="sss-Ha-v70" id="3sp-VM-MT0"/>
                         <outlet property="dotsView" destination="P6B-tU-e40" id="twC-Se-DXs"/>
+                        <outlet property="tblView" destination="ZfX-mq-dac" id="ERd-Cw-L7A"/>
                         <outlet property="textField" destination="Zpz-VB-2yc" id="1GV-9N-Pcc"/>
                     </connections>
                 </viewController>

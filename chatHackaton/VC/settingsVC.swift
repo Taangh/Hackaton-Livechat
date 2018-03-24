@@ -11,13 +11,19 @@ import UIKit
 class settingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, OXPatternLockDelegate{
     
     var patterns: [Pattern] = []
-    
+    var lastPath: [Int] = []
     func didPatternInput(patterLock: OXPatternLock, track: [Int]) {
+        lastPath = track
     }
     
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var tblView: UITableView!
+    
     @IBAction func addButton(_ sender: Any) {
+        patterns.append(Pattern(name: textField.text!, path: lastPath))
+        tblView.reloadData()
+
     }
     
     @IBOutlet weak var dotsView: UIView!
@@ -34,11 +40,13 @@ class settingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tblView.delegate = self
+        tblView.dataSource = self
         setUpDotsView()
     }
     
     func setUpDotsView() {
-        locker = OXPatternLock(frame: CGRect(x: 0, y: 20, width: self.view.bounds.width, height: 260))
+        locker = OXPatternLock(frame: CGRect(x: 0, y: 40, width: self.view.bounds.width, height: 260))
         locker.delegate = self
         locker.backgroundColor = .white
         locker.dot = UIImage(named: "dot.png")
@@ -58,5 +66,30 @@ class settingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         // #warning Incomplete implementation, return the number of rows
         return patterns.count
     }
-
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        textField.text = patterns[indexPath.row].name
+        let path = UIBezierPath()
+        let lockTrack = patterns[indexPath.row].path
+        let ctx = UIGraphicsGetCurrentContext()!
+        
+        
+        for i in 0..<lockTrack.count - 1 {
+            let index = lockTrack[i]
+            let indexTo = lockTrack[i+1]
+            let rect = lockFrames[index]
+            path.move(to: CGPoint(x: rect.midX, y: rect.midY))
+            
+            let rectTo = lockFrames[indexTo]
+            path.addLine(to: CGPoint(x: rectTo.midX, y: rectTo.midY))
+        }
+        
+        trackLineColor.set()
+        ctx.setLineWidth(trackLineThickness)
+        ctx.setLineCap(.round)
+        ctx.setLineJoin(.round)
+        ctx.addPath(path.cgPath)
+        ctx.strokePath()
+        
+    }
 }
