@@ -32,6 +32,7 @@ final class chatVC: JSQMessagesViewController {
         self.inputToolbar.contentView.leftBarButtonItem = nil
         self.inputToolbar.contentView.textView.placeHolder = "Wiadomość"
         self.inputToolbar.contentView.rightBarButtonItem.setTitle("Ok", for: UIControlState.normal)
+        self.view.endEditing(true)
         observeMessages()
         
         
