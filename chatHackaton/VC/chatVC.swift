@@ -11,7 +11,7 @@ import Firebase
 import JSQMessagesViewController
 
 final class chatVC: JSQMessagesViewController {
-
+    var switchKeyboardOn: Bool = true
     var channelRef: DatabaseReference?
     var channel: Channel? {
         didSet {
@@ -24,6 +24,34 @@ final class chatVC: JSQMessagesViewController {
     private lazy var messageRef: DatabaseReference = self.channelRef!.child("messages")
     private var newMessageRefHandle: DatabaseHandle?
     
+    
+    @IBOutlet weak var patternLockView: UIView!
+//    @IBAction func textField(_ sender: UITextField) {
+//        if switchKeyboardOn == false {
+//            showDots()
+//            view.endEditing(true)
+//        }
+//    }
+    fileprivate var writeYes: [Int] = [0,1,2]
+    fileprivate var writeNo: [Int] = [3,4,5]
+    fileprivate var timer: Timer?
+    
+    @IBOutlet var patternLock: OXPatternLock!
+//    @IBAction func switchType(_ sender: UISwitch) {
+//        if (sender.isOn == true) {
+//            showKeyboard()
+//            dismissDots()
+//            switchKeyboardOn = true
+//            print("on")
+//        }
+//        else {
+//            switchKeyboardOn = false
+//            dismissKeyboard()
+//            print("off")
+//        }
+//    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.senderId = Auth.auth().currentUser?.uid
@@ -31,11 +59,42 @@ final class chatVC: JSQMessagesViewController {
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         self.inputToolbar.contentView.leftBarButtonItem = nil
         self.inputToolbar.contentView.textView.placeHolder = "Wiadomość"
+        patternLock.delegate = self
+//        patternLockView.isHidden = true
         self.inputToolbar.contentView.rightBarButtonItem.setTitle("Ok", for: UIControlState.normal)
         observeMessages()
-        
-        
-
+    }
+    
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func showKeyboard() {
+        view.endEditing(false)
+    }
+    
+    func showDots() {
+        self.patternLockView.isHidden = false
+        UIView.animate(withDuration: 0.5, delay: 0, options: .curveEaseInOut, animations: {
+            self.patternLockView.center.y = self.patternLockView.bounds.height
+        }, completion: nil)
+    }
+    
+    func dismissDots() {
+        self.patternLockView.isHidden = true
+    }
+    
+    @IBAction func recordPatternClick(_ sender: Any) {
+        //        savedTrackPath.removeAll()
+        showStatus(message: "Ready to set new pattern")
+    }
+    
+    fileprivate func showStatus(message: String) {
+        //        labelStatus.text = message
+        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: false, block: { _ in
+            //            self.labelStatus.text = ""
+        })
     }
     
     override func collectionView(_ collectionView: JSQMessagesCollectionView!, messageDataForItemAt indexPath: IndexPath!) -> JSQMessageData! {
@@ -93,7 +152,7 @@ final class chatVC: JSQMessagesViewController {
             "senderId" : senderId!,
             "senderName": senderDisplayName!,
             "text": text!,
-        ]
+            ]
         itemRef.setValue(messageItem)
         //JSQSystemSoundPlayer.jsq_playMessageSentAlert()
         finishSendingMessage()
@@ -113,6 +172,22 @@ final class chatVC: JSQMessagesViewController {
             }
         })
     }
+    
+    
+}
 
-
+extension chatVC: OXPatternLockDelegate {
+    func didPatternInput(patterLock: OXPatternLock, track: [Int]) {
+//        timer?.invalidate()
+//        if writeYes == track {
+//            textLabel.text = "yes"
+//            textField.text = "yes"
+//        }
+//        else if writeNo == track {
+//            textLabel.text = "no"
+//        }
+//        else {
+//            print("inknown code")
+//        }
+    }
 }

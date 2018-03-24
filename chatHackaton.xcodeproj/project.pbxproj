@@ -19,6 +19,7 @@
 		2D94604420657EAB00D30DE7 /* CreateChannelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94604320657EAB00D30DE7 /* CreateChannelCell.swift */; };
 		2D94604620658F5B00D30DE7 /* chatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D94604520658F5B00D30DE7 /* chatVC.swift */; };
 		5D8EFB643D7A1FA50EB733B6 /* Pods_chatHackaton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B38FE5C43D846FB2F450D72F /* Pods_chatHackaton.framework */; };
+		D1CC8AFF20665D320076F8AD /* OXPatternLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1CC8AFE20665D320076F8AD /* OXPatternLock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		58FFE802EB18F5AFCC9DA0BA /* Pods-chatHackaton.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chatHackaton.debug.xcconfig"; path = "Pods/Target Support Files/Pods-chatHackaton/Pods-chatHackaton.debug.xcconfig"; sourceTree = "<group>"; };
 		9F58FC401248BCD6F1446AD9 /* Pods-chatHackaton.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-chatHackaton.release.xcconfig"; path = "Pods/Target Support Files/Pods-chatHackaton/Pods-chatHackaton.release.xcconfig"; sourceTree = "<group>"; };
 		B38FE5C43D846FB2F450D72F /* Pods_chatHackaton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_chatHackaton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1CC8AFE20665D320076F8AD /* OXPatternLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OXPatternLock.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		2D2199A6205F017F00C1B4E6 /* chatHackaton */ = {
 			isa = PBXGroup;
 			children = (
+				D1CC8AFE20665D320076F8AD /* OXPatternLock.swift */,
 				2D94604220657E9A00D30DE7 /* Models */,
 				2D946039206575AF00D30DE7 /* VC */,
 				2D2199A7205F017F00C1B4E6 /* AppDelegate.swift */,
@@ -266,6 +269,7 @@
 				2D94604120657E9600D30DE7 /* Channel.swift in Sources */,
 				2D94604620658F5B00D30DE7 /* chatVC.swift in Sources */,
 				2D2199AA205F017F00C1B4E6 /* ViewController.swift in Sources */,
+				D1CC8AFF20665D320076F8AD /* OXPatternLock.swift in Sources */,
 				2D94603B206575BE00D30DE7 /* loginVC.swift in Sources */,
 				2D2199A8205F017F00C1B4E6 /* AppDelegate.swift in Sources */,
 				2D94604420657EAB00D30DE7 /* CreateChannelCell.swift in Sources */,
