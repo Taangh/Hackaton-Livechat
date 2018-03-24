@@ -101,14 +101,6 @@
                                                 </button>
                                             </subviews>
                                         </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8kL-Ad-sPB">
-                                            <rect key="frame" x="315" y="6" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="Add"/>
-                                            <connections>
-                                                <action selector="addChannel:" destination="mnO-bf-Eg2" eventType="touchUpInside" id="Wxi-pv-VHZ"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="kIw-v0-AHJ" firstAttribute="centerY" secondItem="wwo-W9-MWG" secondAttribute="centerY" id="GWp-Jd-IGx"/>
@@ -117,7 +109,6 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="createChannelButton" destination="8kL-Ad-sPB" id="9Ou-Tz-cfl"/>
                                     <outlet property="newChannelNameField" destination="ihs-ZF-H9G" id="2zy-pr-MVH"/>
                                 </connections>
                             </tableViewCell>

@@ -15,10 +15,8 @@ class loginVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        loginTxtField.autocorrectionType = .no
     }
-
     @IBAction func login(_ sender: Any) {
         if loginTxtField.text != "" {
             Auth.auth().signInAnonymously(completion: { user, error in
@@ -29,23 +27,19 @@ class loginVC: UIViewController {
                     return
                 }
             })
+        } else {
+            let animation = CABasicAnimation(keyPath : "position")
+            animation.duration = 0.07
+            animation.repeatCount = 2
+            animation.autoreverses = true
+            animation.fromValue = NSValue(cgPoint: CGPoint(x: self.loginTxtField.center.x - 10, y: self.loginTxtField.center.y))
+            
+            self.loginTxtField.layer.add(animation, forKey: "position")
         }
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0 {
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
