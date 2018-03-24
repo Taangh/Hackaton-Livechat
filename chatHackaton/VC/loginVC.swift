@@ -18,7 +18,6 @@ class loginVC: UIViewController {
         super.viewDidLoad()
         loginTxtField.autocorrectionType = .no
         loginBtn.layer.cornerRadius = 6
-        
     }
     
     @IBAction func login(_ sender: Any) {
