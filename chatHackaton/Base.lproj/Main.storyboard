@@ -45,6 +45,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <color key="backgroundColor" red="0.88429240088105732" green="0.88429240088105732" blue="0.88429240088105732" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </stackView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="0aK-jE-Ov7">
                                 <rect key="frame" x="95" y="165" width="184" height="70"/>

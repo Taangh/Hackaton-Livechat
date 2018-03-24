@@ -12,12 +12,23 @@ import Firebase
 class loginVC: UIViewController {
     
     @IBOutlet weak var loginTxtField: UITextField!
+    @IBOutlet weak var loginStackView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         loginTxtField.autocorrectionType = .no
+=======
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        setUpStackView()
     }
     
+    func setUpStackView() {
+        loginStackView.layer.cornerRadius = 10
+        loginStackView.backgroundColor?.withAlphaComponent(0.2)
+>>>>>>> ab3578ff668bb36d79092e49cf48dd349d37b0b6
+    }
     @IBAction func login(_ sender: Any) {
         if loginTxtField.text != "" {
             Auth.auth().signInAnonymously(completion: { user, error in
