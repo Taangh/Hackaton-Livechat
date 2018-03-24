@@ -64,6 +64,9 @@ final class chatVC: JSQMessagesViewController {
         self.inputToolbar.contentView.textView.placeHolder = "Wiadomość"
         self.inputToolbar.contentView.rightBarButtonItem.setTitle("Ok", for: UIControlState.normal)
         self.inputToolbar.contentView.leftBarButtonItem.setTitle("Dots  ", for: UIControlState.normal)
+        self.inputToolbar.contentView.leftBarButtonItem.setImage(#imageLiteral(resourceName: "dot"), for: .normal)
+        self.inputToolbar.contentView.leftBarButtonItem.contentMode = .scaleAspectFit
+        self.inputToolbar.contentView.leftBarButtonItem.sizeToFit()
 
         observeMessages()
     }

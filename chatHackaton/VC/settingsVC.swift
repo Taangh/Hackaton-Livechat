@@ -31,7 +31,7 @@ class settingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func setUpDotsView() {
-        locker = OXPatternLock(frame: CGRect(x: 0, y: 20, width: self.view.bounds.width, height: 260))
+        locker = OXPatternLock(frame: CGRect(x: 0, y: 40, width: self.view.bounds.width, height: 260))
         locker.delegate = self
         locker.backgroundColor = .white
         locker.dot = UIImage(named: "dot.png")
