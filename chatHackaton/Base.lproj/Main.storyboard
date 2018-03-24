@@ -23,6 +23,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VBp-me-w4i">
+                                <rect key="frame" x="67" y="269" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.95116960340076018" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="Jgt-DS-vqa">
                                 <rect key="frame" x="80" y="285" width="215" height="97"/>
                                 <subviews>
@@ -52,8 +56,12 @@
                         </subviews>
                         <color key="backgroundColor" red="0.84612944160000003" green="0.84612944160000003" blue="0.84612944160000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VBp-me-w4i" secondAttribute="bottom" constant="300" id="4Oj-Bl-EY4"/>
                             <constraint firstItem="Jgt-DS-vqa" firstAttribute="top" secondItem="0aK-jE-Ov7" secondAttribute="bottom" constant="50" id="7cV-LO-Ud6"/>
+                            <constraint firstItem="VBp-me-w4i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="HYg-dP-Otc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Jgt-DS-vqa" secondAttribute="trailing" constant="80" id="Isu-d4-EEB"/>
+                            <constraint firstItem="VBp-me-w4i" firstAttribute="top" secondItem="0aK-jE-Ov7" secondAttribute="bottom" constant="30" id="MBT-97-CKM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VBp-me-w4i" secondAttribute="trailing" constant="50" id="NkN-51-2PK"/>
                             <constraint firstItem="Jgt-DS-vqa" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aml-cD-qJZ"/>
                             <constraint firstItem="0aK-jE-Ov7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gKL-re-hUn"/>
                             <constraint firstItem="Jgt-DS-vqa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="80" id="k0T-gu-FTx"/>
@@ -62,6 +70,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="loginStackView" destination="VBp-me-w4i" id="L9b-La-pAy"/>
                         <outlet property="loginTxtField" destination="339-jG-hio" id="pbM-I9-S3A"/>
                         <segue destination="9I2-Gy-pQU" kind="show" identifier="chatListVC" id="vBC-NM-Mol"/>
                     </connections>

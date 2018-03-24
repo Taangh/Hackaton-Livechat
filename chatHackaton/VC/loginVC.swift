@@ -12,11 +12,18 @@ import Firebase
 class loginVC: UIViewController {
     
     @IBOutlet weak var loginTxtField: UITextField!
-
+    @IBOutlet weak var loginStackView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        setUpStackView()
+    }
+    
+    func setUpStackView() {
+        loginStackView.layer.cornerRadius = 10
+        loginStackView.backgroundColor?.withAlphaComponent(0.2)
     }
 
     @IBAction func login(_ sender: Any) {
