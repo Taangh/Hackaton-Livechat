@@ -157,20 +157,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0bI-c9-s0n">
+                                <rect key="frame" x="0.0" y="64" width="375" height="383"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xFb-Py-lms" customClass="OXPatternLock" customModule="chatHackaton" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="447" width="375" height="220"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wf3-oY-TsF" customClass="OXPatternLock" customModule="chatHackaton" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="200"/>
+                                        <rect key="frame" x="0.0" y="40" width="375" height="180"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FDc-W0-mUs">
+                                        <rect key="frame" x="163" y="4" width="51" height="31"/>
+                                    </switch>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.16343825934825396" blue="0.318705042300093" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="FDc-W0-mUs" firstAttribute="centerX" secondItem="xFb-Py-lms" secondAttribute="centerX" id="F9m-O4-hQr"/>
                                     <constraint firstAttribute="bottom" secondItem="Wf3-oY-TsF" secondAttribute="bottom" id="HaG-xu-4ke"/>
                                     <constraint firstAttribute="height" constant="220" id="LUb-Zx-U4k"/>
-                                    <constraint firstItem="Wf3-oY-TsF" firstAttribute="top" secondItem="xFb-Py-lms" secondAttribute="top" constant="20" id="YIA-OE-de3"/>
+                                    <constraint firstItem="Wf3-oY-TsF" firstAttribute="top" secondItem="xFb-Py-lms" secondAttribute="top" constant="40" id="YIA-OE-de3"/>
+                                    <constraint firstItem="Wf3-oY-TsF" firstAttribute="top" secondItem="FDc-W0-mUs" secondAttribute="bottom" constant="5" id="azm-tC-y7O"/>
                                     <constraint firstAttribute="trailing" secondItem="Wf3-oY-TsF" secondAttribute="trailing" id="fIU-E1-y17"/>
+                                    <constraint firstItem="FDc-W0-mUs" firstAttribute="top" secondItem="xFb-Py-lms" secondAttribute="top" constant="4" id="p5X-EK-P4Z"/>
                                     <constraint firstItem="Wf3-oY-TsF" firstAttribute="leading" secondItem="xFb-Py-lms" secondAttribute="leading" id="vvy-js-6GD"/>
                                 </constraints>
                             </view>
@@ -178,7 +188,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xFb-Py-lms" firstAttribute="trailing" secondItem="aUw-KY-Cf8" secondAttribute="trailing" id="1uJ-7o-2gU"/>
+                            <constraint firstItem="aUw-KY-Cf8" firstAttribute="trailing" secondItem="0bI-c9-s0n" secondAttribute="trailing" id="Oh0-hI-KTO"/>
+                            <constraint firstItem="0bI-c9-s0n" firstAttribute="top" secondItem="aUw-KY-Cf8" secondAttribute="top" id="Ybx-D6-K95"/>
                             <constraint firstItem="xFb-Py-lms" firstAttribute="leading" secondItem="aUw-KY-Cf8" secondAttribute="leading" id="pAt-xH-IGE"/>
+                            <constraint firstItem="0bI-c9-s0n" firstAttribute="leading" secondItem="aUw-KY-Cf8" secondAttribute="leading" id="vhq-ly-2jt"/>
+                            <constraint firstItem="xFb-Py-lms" firstAttribute="top" secondItem="0bI-c9-s0n" secondAttribute="bottom" id="ykF-Fs-yYc"/>
                             <constraint firstItem="xFb-Py-lms" firstAttribute="bottom" secondItem="aUw-KY-Cf8" secondAttribute="bottom" id="yy8-g7-4M0"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="aUw-KY-Cf8"/>
