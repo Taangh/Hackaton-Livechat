@@ -12,10 +12,13 @@ import Firebase
 class loginVC: UIViewController {
     
     @IBOutlet weak var loginTxtField: UITextField!
+    @IBOutlet weak var loginBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loginTxtField.autocorrectionType = .no
+        loginBtn.layer.cornerRadius = 6
+        
     }
     
     @IBAction func login(_ sender: Any) {

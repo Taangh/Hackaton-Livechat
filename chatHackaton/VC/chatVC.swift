@@ -25,6 +25,19 @@ final class chatVC: JSQMessagesViewController {
     private lazy var messageRef: DatabaseReference = self.channelRef!.child("messages")
     private var newMessageRefHandle: DatabaseHandle?
     var locker = OXPatternLock()
+    private lazy var userIsTypingRef : DatabaseReference = self.channelRef!.child("typingIndicator").child(self.senderId)
+    private lazy var userIsTypingQuery: DatabaseQuery = self.channelRef!.child("typingIndicator").queryOrderedByValue().queryEqual(toValue: true)
+    private var localTyping = false
+    var isTyping: Bool {
+        get {
+            return localTyping
+        }
+        set {
+            localTyping = newValue
+            userIsTypingRef.setValue(newValue)
+        }
+    }
+    
 //    @IBOutlet weak var patternLockView: UIView!
 //    @IBAction func textField(_ sender: UITextField) {
 //        if switchKeyboardOn == false {
@@ -70,10 +83,16 @@ final class chatVC: JSQMessagesViewController {
         observeMessages()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        //observeTyping()
+    }
+    
     override func didPressAccessoryButton(_ sender: UIButton!) {
         if(locker.isHidden) {
             locker.isHidden = false
             self.inputToolbar.contentView.textView.isEditable = false
+            
 
             
         } else {
@@ -82,6 +101,11 @@ final class chatVC: JSQMessagesViewController {
 
         }
         
+    }
+    
+    override func textViewDidChange(_ textView: UITextView) {
+        super.textViewDidChange(textView)
+        isTyping = textView.text != ""
     }
     
     func addViewOnTop() {
@@ -175,6 +199,7 @@ final class chatVC: JSQMessagesViewController {
         itemRef.setValue(messageItem)
         //JSQSystemSoundPlayer.jsq_playMessageSentAlert()
         finishSendingMessage()
+        isTyping = false
     }
     
     private func observeMessages() {
@@ -191,6 +216,21 @@ final class chatVC: JSQMessagesViewController {
             }
         })
     }
+    
+    private func observeTyping() {
+        let typingIndicatorRef = channelRef!.child("typingIndicator")
+        userIsTypingRef = typingIndicatorRef.child(senderId)
+        userIsTypingRef.onDisconnectRemoveValue()
+        userIsTypingQuery.observe(.value) { (data: DataSnapshot) in
+            if data.childrenCount == 1 && self.isTyping {
+                return
+            }
+            
+            self.showTypingIndicator = data.childrenCount > 0
+            self.scrollToBottom(animated: true)
+        }
+    }
+    
     
 }
 

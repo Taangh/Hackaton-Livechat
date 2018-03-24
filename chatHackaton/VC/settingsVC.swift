@@ -68,28 +68,6 @@ class settingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        textField.text = patterns[indexPath.row].name
-        let path = UIBezierPath()
-        let lockTrack = patterns[indexPath.row].path
-        let ctx = UIGraphicsGetCurrentContext()!
-        
-        
-        for i in 0..<lockTrack.count - 1 {
-            let index = lockTrack[i]
-            let indexTo = lockTrack[i+1]
-            let rect = lockFrames[index]
-            path.move(to: CGPoint(x: rect.midX, y: rect.midY))
-            
-            let rectTo = lockFrames[indexTo]
-            path.addLine(to: CGPoint(x: rectTo.midX, y: rectTo.midY))
-        }
-        
-        trackLineColor.set()
-        ctx.setLineWidth(trackLineThickness)
-        ctx.setLineCap(.round)
-        ctx.setLineJoin(.round)
-        ctx.addPath(path.cgPath)
-        ctx.strokePath()
         
     }
 }
