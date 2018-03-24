@@ -26,7 +26,7 @@ class settingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: patterns)
         defaults.set(encodedData, forKey: "patterns")
         defaults.synchronize()
-
+        
         tblView.reloadData()
 
     }
@@ -48,11 +48,12 @@ class settingsVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         tblView.delegate = self
         tblView.dataSource = self
         setUpDotsView()
+        
         let defaults = UserDefaults.standard
         if let decoded = defaults.object(forKey: "patterns") as? Data {
             let decodedPatterns = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Pattern]
             patterns = decodedPatterns
-            print(decodedPatterns)
+            tblView.reloadData()
         }
 
     }

@@ -13,6 +13,7 @@ import HUIPatternLockView_Swift
 
 final class chatVC: JSQMessagesViewController {
     var switchKeyboardOn: Bool = true
+    var patterns: [Pattern] = []
     var channelRef: DatabaseReference?
     var channel: Channel? {
         didSet {
@@ -70,16 +71,21 @@ final class chatVC: JSQMessagesViewController {
         super.viewDidLoad()
         addViewOnTop()
         locker.isHidden = true
-        self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsets(top: 10, left: 0, bottom: 300, right: 0)
+        self.collectionView.collectionViewLayout.sectionInset = UIEdgeInsets(top: 10 , left: 0, bottom: 300, right: 0)
         self.senderId = Auth.auth().currentUser?.uid
         collectionView!.collectionViewLayout.incomingAvatarViewSize = CGSize.zero
         collectionView!.collectionViewLayout.outgoingAvatarViewSize = CGSize.zero
         self.inputToolbar.contentView.textView.placeHolder = "Wiadomość"
         self.inputToolbar.contentView.rightBarButtonItem.setTitle("Ok", for: UIControlState.normal)
         self.inputToolbar.contentView.leftBarButtonItem.setTitle("Dots  ", for: UIControlState.normal)
-        self.inputToolbar.contentView.leftBarButtonItem.setImage(#imageLiteral(resourceName: "dot"), for: .normal)
-        self.inputToolbar.contentView.leftBarButtonItem.sizeToFit()
-
+        self.inputToolbar.contentView.leftBarButtonItem.setImage(#imageLiteral(resourceName: "splaszczona"), for: [.normal, .highlighted] )
+        self.inputToolbar.contentView.leftBarButtonItem.setImage(#imageLiteral(resourceName: "splaszczona"), for: [.normal] )
+        let defaults = UserDefaults.standard
+        if let decoded = defaults.object(forKey: "patterns") as? Data {
+            let decodedPatterns = NSKeyedUnarchiver.unarchiveObject(with: decoded) as! [Pattern]
+            patterns = decodedPatterns
+            print(patterns.count)
+        }
         observeMessages()
     }
     
@@ -237,17 +243,20 @@ extension chatVC: OXPatternLockDelegate {
         timer?.invalidate()
         self.inputToolbar.contentView.rightBarButtonItem.isEnabled = true
         if writeYes == track {
-            //textLabel.text = "yes"
-//            textField.text = "yes"
             self.inputToolbar.contentView.textView.text = "yes"
         }
         else if writeNo == track {
-//            textLabel.text = "no"
             self.inputToolbar.contentView.textView.text = "no"
 
         }
-        else {
-            print("inknown code")
+        
+        print(patterns)
+        
+        for i in 0...patterns.count-1 {
+        
+            if(patterns[i].path == track) {
+                self.inputToolbar.contentView.textView.text = patterns[i].name
+            }
         }
         print(track)
     }

@@ -31,7 +31,7 @@ class chatListVC: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Kanały"
+        title = "Użytkownicy"
         observeChannels()
     }
     
@@ -96,10 +96,11 @@ class chatListVC: UITableViewController {
             let id = snapshot.key
             if let name = channelData["name"] as! String!, name.characters.count > 0 {
                 self.channels.append(Channel(id: id, name: name))
-                self.tableView.reloadData()
             } else {
                 print("Error")
             }
+            self.tableView.reloadData()
+
         })
     }
     
